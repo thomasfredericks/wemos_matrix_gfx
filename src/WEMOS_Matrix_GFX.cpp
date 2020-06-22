@@ -51,6 +51,24 @@ void MLED::drawPixel(int16_t  x, int16_t y, uint16_t color)
 
   	y = 7 - y;
 
+	int16_t t;
+	switch (getRotation()) {
+	case 1:
+		t = x;
+		x = 7 - y;
+		y = t;
+		break;
+	case 2:
+		x = 7 - x;
+		y = 7 - y;
+		break;
+	case 3:
+		t = x;
+		x = y;
+		y = 7 - t;
+		break;
+	}
+
 	if(color)
 	{
 		disBuffer[y]|=(1<<x);
